@@ -82,50 +82,6 @@ export default function Login() {
     <main className="flex flex-col">
       <Navbar />
       <div className="flex flex-col h-full items-center justify-center w-full">
-<<<<<<< HEAD
-        <div className="flex flex-col bg-white/5 shadow-xl w-96 h-min rounded-lg mt-10 shadow-xl p-6">
-          <Tabs defaultValue="signin" className="">
-            <TabsList className="flex flex-row justify-center bg-transparent">
-            <TabsTrigger value="signin">Sign In</TabsTrigger>
-              <TabsTrigger className="" value="signout">Sign Up</TabsTrigger>
-            </TabsList>
-            <TabsContent value="signin">
-            <div className="flex flex-col w-full justify-center">
-                <h2 className="font-bold text-xl text-neutral-200">
-                  Welcome
-                </h2>
-                <p className="text-sm max-w-sm mt-2 text-neutral-300">
-                  Fill up the from and press sign in button to log into account.
-                </p>
-                <form className="my-8 z-10">
-                  <LabelInputContainer className="mb-4">
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input className="bg-[#1d1d34]" id="email" placeholder="projectmayhem@fc.com" type="email" />
-                  </LabelInputContainer>
-                  <LabelInputContainer className="mb-8">
-                    <Label htmlFor="password">Password</Label>
-                    <Input className="bg-[#1d1d34]" id="password" placeholder="••••••••" type="password" />
-                  </LabelInputContainer>
-
-                  <button
-                    className="bg-indigo-500 relative group/btn block w-full text-white rounded-md h-10 font-medium"
-                    type="submit"
-                  >
-                    Sign in &rarr;
-                  </button>
-
-                  <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent my-8 h-[1px] w-full" />
-
-                  <div className="flex flex-row items-center justify-center gap-4">
-                    <IconBrandGithub className="h-6 w-6 text-neutral-300" />
-                    <IconBrandGoogle className="h-6 w-6 text-neutral-300" />
-                  </div>
-                </form>
-                <div className="absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] w-96 h-96 rounded-full blur-[300px] bg-indigo-500 z-0"></div>
-              </div>
-            </TabsContent>
-            <TabsContent className="z-10" value="signout">
-=======
         <div className="flex flex-col bg-white/5 shadow-xl w-96 h-min rounded-lg mt-10 p-6">
           <Tabs defaultValue="signin">
             <TabsList className="flex flex-row justify-center bg-transparent gap-2">
@@ -133,7 +89,6 @@ export default function Login() {
               <TabsTrigger value="signup" onClick={() => setError("")}>Sign Up</TabsTrigger>
             </TabsList>
             <TabsContent className="z-10" value="signup">
->>>>>>> d8984852a22e2b002f7be8d861af3167f15063ba
               <div className="flex flex-col w-full justify-center z-10">
                 <h2 className="font-bold text-xl text-neutral-200">
                   Welcome
@@ -185,8 +140,6 @@ export default function Login() {
                 <div className="absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] w-96 h-96 rounded-full blur-[300px] bg-indigo-500 z-0"></div>
               </div>
             </TabsContent>
-<<<<<<< HEAD
-=======
             <TabsContent value="signin">
               <div className="flex flex-col w-full justify-center">
                 <h2 className="font-bold text-xl text-neutral-200">
@@ -225,7 +178,6 @@ export default function Login() {
                 <div className="absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] w-96 h-96 rounded-full blur-[300px] bg-indigo-500 z-0"></div>
               </div>
             </TabsContent>
->>>>>>> d8984852a22e2b002f7be8d861af3167f15063ba
           </Tabs>
         </div>
         <div className="hidden md:block absolute bottom-64 left-24 w-96 h-96 rounded-full blur-[100px] bg-gradient-to-r from-violet-600 to-indigo-600 z-0"></div>
