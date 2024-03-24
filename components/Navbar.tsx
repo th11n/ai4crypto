@@ -14,9 +14,16 @@ import {
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import Link from "next/link";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { Database } from "@/lib/database.types";
 
 
-export default function Navbar() {
+type Props = {
+    isAuthenticated?: boolean;
+}
+
+
+export default function Navbar({ isAuthenticated = false }: Props) {
     return (
         <div className="flex flex-row justify-around items-center text-center h-24 w-full z-10">
             <h1 className="font-bold text-xl">ai4crypto</h1>
@@ -30,22 +37,32 @@ export default function Navbar() {
                         </Link>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <Link href="/about-us" legacyBehavior passHref>
+                        <Link href="/#about" legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                 About us
                             </NavigationMenuLink>
                         </Link>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <Link href="/about-us" legacyBehavior passHref>
+                        <Link href="/#pricing" legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                About us
+                                Pricing
                             </NavigationMenuLink>
                         </Link>
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
-            <Button className="hidden md:block bg-transparent border-2 border-indigo-500 hover:bg-indigo-500">Sign in</Button>
+            {
+                isAuthenticated ? (
+                    <Link href="/dashboard" passHref>
+                        <Button className="hidden md:block bg-transparent border-2 border-indigo-500 hover:bg-indigo-500">Dashboard</Button>
+                    </Link>
+                ) : (
+                    <Link href="/login" passHref>
+                        <Button className="hidden md:block bg-transparent border-2 border-indigo-500 hover:bg-indigo-500">Sign in</Button>
+                    </Link>
+                )
+            }
         </div>
     );
 }
