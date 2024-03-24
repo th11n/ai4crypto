@@ -1,11 +1,22 @@
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button"
+import { Database } from "@/lib/database.types";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import Image from "next/image";
+import { cookies } from 'next/headers'
 
-export default function Home() {
+export default async function Home() {
+  const supabase = createServerComponentClient<Database>({
+    cookies,
+  })
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession()
+
   return (
     <main className="flex flex-col">
-      <Navbar />
+      <Navbar isAuthenticated={session !== null} />
       <div className="flex flex-col h-full items-center justify-center w-full">
         <div className="flex flex-col items-center justify-center w-full gap-6 z-10 md:mt-24">
           <span className="text-indigo-200">Fast & Reliable</span>
@@ -19,42 +30,42 @@ export default function Home() {
         <div className="flex flex-col justfiy-center items-center mt-24 z-10 gap-1">
           <h1 className="font-medium text-gray-400">Built with</h1>
           <div className="flex flex-row items-center gap-6 opacity-60">
-            <Image       
-            src="/openai.png"
-            width={60}
-            height={60}
-            alt="OpenAI Logo"
-            className="h-[60px] w-[60px]"/>
-            <Image       
-            src="/Perplexity.png"
-            width={70}
-            height={70}
-            alt="Perplexity Logo"
-            className="h-[75px] w-[75px]"/>
-            <Image       
-            src="/Anthropic.png"
-            width={70}
-            height={70}
-            alt="Anthropic Logo"
-            className="h-[45px] w-[45px]"/>
-            <Image       
-            src="/Replicate.png"
-            width={70}
-            height={70}
-            alt="Replicate Logo"
-            className="h-[80px] w-[80px]"/>
-            <Image       
-            src="/Amazon.png"
-            width={70}
-            height={70}
-            alt="Amazon Logo"
-            className="h-[50px] w-[50px] hidden md:block"/>
-            <Image       
-            src="/deepai.png"
-            width={170}
-            height={70}
-            alt="DeepAI Logo"
-            className="h-[70px] w-[172px] hidden md:block"/>
+            <Image
+              src="/openai.png"
+              width={60}
+              height={60}
+              alt="OpenAI Logo"
+              className="h-[60px] w-[60px]" />
+            <Image
+              src="/Perplexity.png"
+              width={70}
+              height={70}
+              alt="Perplexity Logo"
+              className="h-[75px] w-[75px]" />
+            <Image
+              src="/Anthropic.png"
+              width={70}
+              height={70}
+              alt="Anthropic Logo"
+              className="h-[45px] w-[45px]" />
+            <Image
+              src="/Replicate.png"
+              width={70}
+              height={70}
+              alt="Replicate Logo"
+              className="h-[80px] w-[80px]" />
+            <Image
+              src="/Amazon.png"
+              width={70}
+              height={70}
+              alt="Amazon Logo"
+              className="h-[50px] w-[50px] hidden md:block" />
+            <Image
+              src="/deepai.png"
+              width={170}
+              height={70}
+              alt="DeepAI Logo"
+              className="h-[70px] w-[172px] hidden md:block" />
           </div>
         </div>
         <div className="hidden md:block absolute bottom-64 left-24 w-96 h-96 rounded-full blur-[100px] bg-gradient-to-r from-violet-600 to-indigo-600"></div>
