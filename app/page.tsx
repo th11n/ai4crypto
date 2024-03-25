@@ -4,6 +4,7 @@ import { Database } from "@/lib/database.types";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import Image from "next/image";
 import { cookies } from 'next/headers'
+import Link from "next/link";
 
 export default async function Home() {
   const supabase = createServerComponentClient<Database>({
@@ -20,11 +21,23 @@ export default async function Home() {
       <div className="flex flex-col h-full items-center justify-center w-full">
         <div className="flex flex-col items-center justify-center w-full gap-6 z-10 md:mt-24">
           <span className="text-indigo-200">Fast & Reliable</span>
-          <h1 className="text-4xl md:text-6xl font-bold leading-10 text-center">Build Earn Automate</h1>
-          <p className="w-9/12 md:w-5/12 text-center text-gray-300 font-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h1 className="text-4xl md:text-6xl font-bold leading-10 text-center">Unleash AI Power, Your Way</h1>
+          <p className="w-9/12 md:w-5/12 text-center text-gray-300 font-light">Experience the Future of AI Access: ChatGPT, DALL-E, and More, Available for Purchase with Cryptocurrency including Bitcoin, Ethereum, Monero and many more</p>
           <div className="flex flex-row gap-3">
-            <Button className="w-36 md:w-48 py-6 bg-[#7059ff] border border-[#7059ff] rounded-full">Learn More</Button>
-            <Button className="w-36 md:w-48 py-6 bg-transparent border border-[#7059ff] rounded-full">Sign In</Button>
+            <Link href="#about">
+              <Button className="w-36 md:w-48 py-6 bg-[#7059ff] border border-[#7059ff] rounded-full">Learn More</Button>
+            </Link>
+            {
+              session ? (
+                <Link href="/dashboard">
+                  <Button className="w-36 md:w-48 py-6 bg-transparent border border-[#7059ff] rounded-full">Dashboard</Button>
+                </Link>
+              ) : (
+                <Link href="/login">
+                  <Button className="w-36 md:w-48 py-6 bg-transparent border border-[#7059ff] rounded-full">Sign In</Button>
+                </Link>
+              )
+            }
           </div>
         </div>
         <div className="flex flex-col justfiy-center items-center mt-24 z-10 gap-1">
